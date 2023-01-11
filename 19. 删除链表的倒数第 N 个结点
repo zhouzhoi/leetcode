@@ -10,6 +10,7 @@ class Solution {
         return dummy.next;
 
     }
+    //找到单链表的倒数第k个节点
     private ListNode findFromEnd(ListNode head ,int k){
         ListNode p1 = head;
         //p1先走k步
