@@ -1,0 +1,12 @@
+class Solution {
+    public ListNode reverseList(ListNode head) {
+       //如果链表为空或者只有一个节点的时候，反转结果就是他自己
+       if(head == null || head.next == null){
+           return head;
+       } 
+       ListNode last  = reverseList(head.next);
+       head.next.next = head;
+       head.next = null;
+       return last;
+    }
+}
