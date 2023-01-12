@@ -1,0 +1,15 @@
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //定义p1指向A链表的头结点，p2指向B链表的头结点
+        ListNode p1 = headA, p2 = headB;
+        while (p1 != p2){
+            //p1走一步，走到A链表的末尾，转到B链表
+            if(p1 == null) p1 = headB;
+            else p1 = p1.next;
+            //p2走一步，走到B链表的末尾，转到A链表
+            if(p2 == null) p2 = headA;
+            else p2 = p2.next;
+        }
+        return p1;
+    }
+}
