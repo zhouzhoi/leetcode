@@ -1,0 +1,25 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        ListNode slow,fast;
+        slow = fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) break;
+        }
+        //如果不是上面的情况
+        if(fast == null || fast.next == null){
+            //快指针遇到空指针意味着没有幻
+            return null;
+        }
+        //slow重新指向头结点
+        slow = head;
+        //快慢指针同时前进，相交点就是环起点
+        while(slow != fast){
+            fast = fast.next;
+            slow = slow.next;
+        }
+        //返回slow或者fast都一样
+        return fast;
+    }
+}
