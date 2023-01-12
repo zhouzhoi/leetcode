@@ -1,0 +1,27 @@
+//定义后驱节点
+
+ListNode successor = null;
+
+// 将链表的前 n 个节点反转（n <= 链表长度）
+
+ListNode reverseN(ListNode head, int n){
+
+​	if(n == 1){
+
+​		//记录第n + 1个节点
+
+​		successor = head.next;
+
+​		return  head;	
+
+​	}
+
+​	ListNode last = reversrN(head.next ,n - 1);
+
+​	head.next.next = head;
+
+​	head.next = successor;
+
+​	return last;
+
+}
