@@ -1,0 +1,25 @@
+class Solution {
+    //记录最大深度
+    int res = 0;
+    //记录遍历到节点的深度
+    int depth = 0;
+
+    public int maxDepth(TreeNode root){
+        traverse(root);
+        return res;
+    }
+    //遍历二叉树
+    void traverse(TreeNode root){
+        if(root == null){
+            return;
+        }
+        //前序遍历位置
+        depth++;
+        //遍历的过程中记录最大深度
+        res = Math.max(res, depth);
+        traverse(root.left);
+        traverse(root.right);
+        //后序位置
+        depth--;
+    }
+}
