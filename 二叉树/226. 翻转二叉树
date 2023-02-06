@@ -1,0 +1,24 @@
+// 「遍历」的思路
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        traverse(root);
+        return root;
+    }
+
+    //二叉树遍历函数
+    void traverse(TreeNode root){
+        if(root == null){
+            return;
+        }
+
+        /*前序位置*/
+        //每一个节点需要做的事就是交换它的左右子节点
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+
+        //遍历框架，去遍历左右子树的节点
+        traverse(root.right);
+        traverse(root.left);
+    }
+}
