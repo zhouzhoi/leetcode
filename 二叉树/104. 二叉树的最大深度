@@ -1,3 +1,4 @@
+/***** 解法一，回溯算法思路 *****/
 class Solution {
     //记录最大深度
     int res = 0;
@@ -21,5 +22,18 @@ class Solution {
         traverse(root.right);
         //后序位置
         depth--;
+    }
+}
+
+class Solution {
+/***** 解法二，动态规划思路 *****/
+    public int maxDepth(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+        int leftMax = maxDepth(root.left);
+        int rightMax = maxDepth(root.right);
+        //根据左右子树的最大深度推出原二叉树的最大深度
+        return 1 + Math.max(leftMax,rightMax);
     }
 }
