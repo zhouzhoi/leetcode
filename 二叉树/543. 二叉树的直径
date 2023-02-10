@@ -17,3 +17,29 @@ class Solution {
 }
 
 逐渐上手了啊哈哈哈哈哈
+
+class Solution {
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        // 计算出左右子树的最大高度
+        int leftMax = maxDepth(root.left);
+        int rightMax = maxDepth(root.right);
+        // root 这个节点的直径
+        int res = leftMax + rightMax;
+        // 递归遍历 root.left 和 root.right 两个子树
+        return Math.max(res,
+                Math.max(diameterOfBinaryTree(root.left),
+                        diameterOfBinaryTree(root.right)));
+    }
+
+    int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftMax = maxDepth(root.left);
+        int rightMax = maxDepth(root.right);
+        return 1 + Math.max(leftMax, rightMax);
+    }
+}
