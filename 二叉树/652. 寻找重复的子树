@@ -1,0 +1,29 @@
+class Solution {
+    //记录所有子树以及出现的次数
+    HashMap<String, Integer> memo = new HashMap<>();
+    //记录重复的子树根节点
+    LinkedList<TreeNode> res = new LinkedList<>();
+
+    /**主函数 */
+    public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+        traverse(root);
+        return res;
+    }
+     String traverse(TreeNode root){
+        if(root == null){
+            return "#";
+        }
+        String left = traverse(root.left);
+        String right = traverse(root.right);
+        String subtree = left + "," + right + "," + root.val;
+
+        int flag = memo.getOrDefault(subtree, 0);
+        //多次重读也指挥被加入结果集一次
+        if(flag == 1){
+            res.add(root);
+        }
+        //给子树对应的出现次数加一
+        memo.put(subtree, flag + 1);
+        return subtree;
+     }
+}
